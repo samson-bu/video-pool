@@ -11,7 +11,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import self.samson.bu.videos.entity.Video;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
