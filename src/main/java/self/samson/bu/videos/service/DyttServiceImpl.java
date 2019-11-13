@@ -18,18 +18,18 @@ public class DyttServiceImpl implements IVideoService {
 
     @Override
     public List<Element> preProcessing(String uri) {
+        // TODO: 切片方式增加入口trace
 
-        LOGGER.info("method [preProcessing] entry");
-
+        List<Element> elements = new ArrayList<>();
         try {
             Document page = Jsoup.connect(uri).get();
-            return page.select(DyttServiceImpl.URL_CSS_QUERY);
+            elements = page.select(DyttServiceImpl.URL_CSS_QUERY);
         } catch (IOException ioe) {
-            // TODO: 增加日志系统
             LOGGER.error(ioe, ioe);
         }
 
-        return new ArrayList<>();
+        // TODO: 切片方式增加出口trace
+        return elements;
     }
 
     @Override
