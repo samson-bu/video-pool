@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+    <Properties>
+        <Property name="logPath">D:\Workspace\02-idea-projects\video-pool\logs</Property>
+        <Property name="logFile">app.log</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%date{yyyyMMdd-hh:mm:ss.SSS} %-5level %logger -%m%xEx%n"/>
+        </Console>
+        <RollingFile name="ROLLING_FILE" fileName="${logPath}/${logFile}"
+                     filePattern="${logPath}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.tar.gz">
+            <PatternLayout pattern="%date{yyyyMMdd-hh:mm:ss.SSS} [%thread] %-5level %logger -%m%xEx%n"/>
+            <SizeBasedTriggeringPolicy size="200MB"/>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <logger name="org.springframework.beans" level="debug"/>
+        <logger name="org.springframework.web" level="debug"/>
+        <logger name="self.samson.bu.videos" level="debug"/>
+
+        <Root level="info">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

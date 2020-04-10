@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%date{yyyyMMdd-hh:mm:ss.SSS} %-5level %logger -%m%xEx%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <logger name="org.springframework.beans" level="debug"/>
+        <logger name="org.springframework.web" level="debug"/>
+        <logger name="self.samson.bu.videos" level="debug"/>
+
+        <Root level="debug">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
